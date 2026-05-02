@@ -71,34 +71,171 @@ class _PageMState extends State<PageM> {
                 ),
               ),
 
-              Row(
-                mainAxisSize: MainAxisSize.min, //цетрумем Row
+              SizedBox(
+                child:    Row(
+                  mainAxisSize: MainAxisSize.min, //цетрумем Row
+                  children: [
+                    const SizedBox(height: 180),
+
+                    SvgPicture.asset(
+                      'images/IconP5.svg',
+                      width: 20,
+                      height: 20,
+                      fit: BoxFit.contain,  // работает так же как с PNG
+                    ),
+                    const SizedBox(width: 10),  // отступ между текстами
+                    const Text(
+                      'Не подключено',
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+
+              Column(
                 children: [
-                  SvgPicture.asset(
-                    'images/IconP5.svg',
-                    width: 20,
-                    height: 20,
-                    fit: BoxFit.contain,  // работает так же как с PNG
-                  ),
-                  const SizedBox(width: 10),  // отступ между текстами
                   const Text(
-                    'Не подключено',
+                    'Подключиться',  //
                     style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
+                  const SizedBox(height: 20),  // height, а не width (вертикальный отступ)
+                  Image.asset(
+                    'images/Group4.png',
+                    width: 202,
+                    height: 202,
+                  ),
+                  const SizedBox(height: 50),
+
                 ],
               ),
 
+              // Кнопка с Row внутри
+              SizedBox(
+                width: 298,
+                height: 36,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF3F3F3F),
+                    padding: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(width: 8),
 
-              const SizedBox(height: 12),
-              Image.asset(
-                'images/Group4.png',
-                width: 150,
-                height: 150,
+                      // SVG иконка 1
+                      SvgPicture.asset(
+                        'images/IconPage1.svg',
+                        width: 21,
+                        height: 21,
+                        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                      ),
+
+                      const SizedBox(width: 8),
+
+                      const Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Автовыбор',
+                              style: TextStyle(fontSize: 10, color: Colors.white),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Text(
+                              'Самый быстрый сервер',
+                              style: TextStyle(fontSize: 10, color: Colors.white),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      SvgPicture.asset(
+                        'images/IconPage2.svg',
+                        width: 21,
+                        height: 21,
+                        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                      ),
+
+                      const SizedBox(width: 8),
+                    ],
+                  ),
+                ),
               ),
-              const SizedBox(height: 12),
+              // Нижняя навигация
+              Container(
+                padding: const EdgeInsets.only(top: 60),
+                
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    BottomItemSvg(asset: 'images/IconP1.svg', label: 'Подлкючиться'),
+                    BottomItemSvg(asset: 'images/IconP2.svg', label: 'Тарифы'),
+                    BottomItemSvg(asset: 'images/IconP3.svg', label: 'Поделиться'),
+                    BottomItemSvg(asset: 'images/IconP4.svg', label: 'Профиль'),
+                  ],
+                ),
+              )
+
+
+
+
+
+
+
             ],
           ),
         ),
+      ),
+    );
+  }
+
+}
+// САМ ВИДЖЕТ - разместите его внизу файла или в отдельном файле
+class BottomItemSvg extends StatelessWidget {
+  final String asset;
+  final String label;  // 👈 добавляем текст
+  final VoidCallback? onTap;
+
+  const BottomItemSvg({
+    super.key,
+    required this.asset,
+    required this.label,  // 👈 обязательный параметр
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            asset,
+            width: 24,
+            height: 24,
+            colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 10,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
     );
   }
