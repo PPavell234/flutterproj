@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterproj/pages/connteciton.dart';
+import 'package:flutterproj/pages/profile.dart';
+import 'package:flutterproj/pages/share.dart';
 import 'package:flutterproj/pages/tarifPage.dart'; //Добавление для svg
 
 class PageM extends StatefulWidget {
@@ -121,19 +124,19 @@ class _PageMState extends State<PageM> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(width: 8),
-                      // SvgPicture.asset(
-                      //   'images/IconPage1.svg',
-                      //   width: 21,
-                      //   height: 21,
-                      //   colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                      // ),
-                      SizedBox(width: 8),
-                      Expanded(
+                      const SizedBox(width: 8),
+                       SvgPicture.asset(
+                         'images/IconPage1.svg',
+                         width: 21,
+                         height: 21,
+                         colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                       ),
+                      const SizedBox(width: 8),
+                      const Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -153,13 +156,13 @@ class _PageMState extends State<PageM> {
                           ],
                         ),
                       ),
-                      // SvgPicture.asset(
-                      //   'images/IconPage2.svg',
-                      //   width: 21,
-                      //   height: 21,
-                      //   colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                      // ),
-                      SizedBox(width: 8),
+                       SvgPicture.asset(
+                         'images/IconPage2.svg',
+                         width: 21,
+                         height: 21,
+                         colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                       ),
+                      const SizedBox(width: 8),
                     ],
                   ),
                 ),
@@ -178,7 +181,12 @@ class _PageMState extends State<PageM> {
                     BottomItemSvg(
                       asset: 'images/IconP1.svg',
                       label: 'Подключиться',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const connection()),
+                        );
+                      },
                     ),
                     BottomItemSvg(
                       asset: 'images/IconP2.svg',
@@ -193,12 +201,22 @@ class _PageMState extends State<PageM> {
                     BottomItemSvg(
                       asset: 'images/IconP3.svg',
                       label: 'Поделиться',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const share()),
+                        );
+                      },
                     ),
                     BottomItemSvg(
                       asset: 'images/IconP4.svg',
                       label: 'Профиль',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const profile()),
+                        );
+                      },
                     ),
                   ],
                 ),

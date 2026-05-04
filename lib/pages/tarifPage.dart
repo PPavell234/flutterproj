@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutterproj/pages/pageM.dart';
+import 'package:flutterproj/pages/share.dart';
 
 class tarifPage extends StatefulWidget {
   const tarifPage({super.key});
@@ -405,7 +406,12 @@ class _tarifPageState extends State<tarifPage> {
                       BottomItemSvg(
                         asset: 'images/IconP3.svg',
                         label: 'Поделиться',
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const share()),
+                          );
+                        },
                       ),
                       BottomItemSvg(
                         asset: 'images/IconP4.svg',
