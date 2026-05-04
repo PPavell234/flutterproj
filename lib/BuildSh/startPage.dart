@@ -48,7 +48,12 @@ class _startPageState extends State<startPage> {
 
                child: Column(
                  children: [
-                   const SizedBox(height: 120),
+                   const SizedBox(height: 80),
+                   Text(
+                     'Шаг 1/2',
+                     style: TextStyle(fontSize: 15, color: Colors.black),
+                   ),
+                   const SizedBox(height: 80),
                    Text(
                      'Добро пожаловать',
                      style: TextStyle(fontSize: 20, color: Colors.black),
@@ -176,6 +181,54 @@ class _startPageState extends State<startPage> {
                       height: 30,
                     ),
                   ],
+                ),
+              ),
+
+              const SizedBox(height: 50),
+
+
+              // Кнопка с Row внутри
+              SizedBox(
+
+                width: 298,
+                height: 36,
+
+                child: ElevatedButton(
+
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF3F3F3F),
+                    padding: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(width: 8),
+
+                      // SVG иконка 1
+
+                      const SizedBox(width: 8),
+
+                      const Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+
+                            Text(
+                              'Продолжить',
+                              style: TextStyle(fontSize: 10, color: Colors.white),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
 
