@@ -4,7 +4,7 @@ import 'package:flutterproj/pages/connteciton.dart';
 import 'package:flutterproj/pages/profile.dart';
 import 'package:flutterproj/pages/share.dart';
 import 'package:flutterproj/pages/tarifPage.dart'; //Добавление для svg
-
+import 'package:flutterproj/widgets/bottom_navigation.dart';   // Добавление виджета
 class PageM extends StatefulWidget {
   const PageM({super.key});
 
@@ -172,55 +172,7 @@ class _PageMState extends State<PageM> {
               const Spacer(),
 
               // Нижняя навигация
-              Container(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    BottomItemSvg(
-                      asset: 'images/IconP1.svg',
-                      label: 'Подключиться',
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const connection()),
-                        );
-                      },
-                    ),
-                    BottomItemSvg(
-                      asset: 'images/IconP2.svg',
-                      label: 'Тарифы',
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const tarifPage()),
-                        );
-                      },
-                    ),
-                    BottomItemSvg(
-                      asset: 'images/IconP3.svg',
-                      label: 'Поделиться',
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const share()),
-                        );
-                      },
-                    ),
-                    BottomItemSvg(
-                      asset: 'images/IconP4.svg',
-                      label: 'Профиль',
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const profile()),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
+              BottomNavigation(context: context), // передаём context
             ],
           ),
         ),

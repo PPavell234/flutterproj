@@ -4,6 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutterproj/pages/pageM.dart';
 import 'package:flutterproj/pages/tarifPage.dart';
 
+import '../widgets/bottom_navigation.dart';
+
 class share extends StatefulWidget {
   const share({super.key});
 
@@ -189,45 +191,8 @@ class _shareState extends State<share> {
               ),
               const Spacer(),
               // Нижняя навигация
-              Container(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    BottomItemSvg(
-                      asset: 'images/IconP1.svg',
-                      label: 'Подключиться',
-                      onTap: () {},
-                    ),
-                    BottomItemSvg(
-                      asset: 'images/IconP2.svg',
-                      label: 'Тарифы',
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const tarifPage()),
-                        );
-                      },
-                    ),
-                    BottomItemSvg(
-                      asset: 'images/IconP3.svg',
-                      label: 'Поделиться',
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const share()),
-                        );
-                      },
-                    ),
-                    BottomItemSvg(
-                      asset: 'images/IconP4.svg',
-                      label: 'Профиль',
-                      onTap: () {},
-                    ),
-                  ],
-                ),
-              ),
+              // Нижняя навигация
+              BottomNavigation(context: context), // передаём context
 
 
 
