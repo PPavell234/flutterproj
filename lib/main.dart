@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
+import 'package:flutterproj/BuildSh/startPage.dart';
 import 'package:flutterproj/pages/pageM.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const PageM(),  // 👈 Главный экран приложения
+      home: const startPage(),  // 👈 Главный экран приложения
     );
   }
 }
@@ -31,6 +32,6 @@ class MyApp extends StatelessWidget {
 Widget pageMPreview() {
   return const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: PageM(),
+    home: startPage(),
   );
 }
