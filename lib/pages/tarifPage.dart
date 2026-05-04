@@ -378,9 +378,11 @@ class _tarifPageState extends State<tarifPage> {
                   ),
                 ),
 
+                const Spacer(),
+
                 // Нижняя навигация
                 Container(
-                  padding: const EdgeInsets.only(top: 12),
+                  padding: const EdgeInsets.only(bottom: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -388,15 +390,12 @@ class _tarifPageState extends State<tarifPage> {
                       BottomItemSvg(
                         asset: 'images/IconP1.svg',
                         label: 'Подключиться',
-                        onTap: () {
-                          // переход на страницу подключения
-                        },
+                        onTap: () {},
                       ),
                       BottomItemSvg(
                         asset: 'images/IconP2.svg',
                         label: 'Тарифы',
                         onTap: () {
-                          // 👇 ПЕРЕХОД НА СТРАНИЦУ ТАРИФОВ
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => const tarifPage()),
@@ -406,20 +405,16 @@ class _tarifPageState extends State<tarifPage> {
                       BottomItemSvg(
                         asset: 'images/IconP3.svg',
                         label: 'Поделиться',
-                        onTap: () {
-                          // переход на страницу поделиться
-                        },
+                        onTap: () {},
                       ),
                       BottomItemSvg(
                         asset: 'images/IconP4.svg',
                         label: 'Профиль',
-                        onTap: () {
-                          // переход на страницу профиля
-                        },
+                        onTap: () {},
                       ),
                     ],
                   ),
-                )
+                ),
 
 
 

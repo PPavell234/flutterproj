@@ -16,13 +16,12 @@ class _PageMState extends State<PageM> {
       backgroundColor: const Color(0xFF2B2B2B),
       body: Center(
         child: SizedBox(
-
-          width: 300,      // 👈 ширина Column
+          width: 300, // ширина Column
           child: Column(
             children: [
               // Row с кнопками
               SizedBox(
-                height: 120,  // высота всей строки
+                height: 120, // высота всей строки
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -72,41 +71,40 @@ class _PageMState extends State<PageM> {
                 ),
               ),
 
-              SizedBox(
-                child:    Row(
-                  mainAxisSize: MainAxisSize.min, //цетрумем Row
-                  children: [
-                    const SizedBox(height: 180),
+              const SizedBox(height: 180), // отступ сверху
 
-                    SvgPicture.asset(
-                      'images/IconP5.svg',
-                      width: 20,
-                      height: 20,
-                      fit: BoxFit.contain,  // работает так же как с PNG
-                    ),
-                    const SizedBox(width: 10),  // отступ между текстами
-                    const Text(
-                      'Не подключено',
-                      style: TextStyle(fontSize: 16, color: Colors.white),
-                    ),
-                  ],
-                ),
+              // Row с текстом "Не подключено"
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset(
+                     'images/IconP5.svg',
+                     width: 20,
+                     height: 20,
+                     fit: BoxFit.contain,
+                  ),
+                   const SizedBox(width: 10),
+                  const Text(
+                    'Не подключено',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                ],
               ),
 
+              // Колонка с текстом и картинкой
               Column(
                 children: [
                   const Text(
-                    'Подключиться',  //
+                    'Подключиться',
                     style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
-                  const SizedBox(height: 20),  // height, а не width (вертикальный отступ)
-                  Image.asset(
-                    'images/Group4.png',
-                    width: 202,
-                    height: 202,
-                  ),
+                  const SizedBox(height: 20),
+                   Image.asset(
+                     'images/Group4.png',
+                     width: 202,
+                     height: 202,
+                   ),
                   const SizedBox(height: 50),
-
                 ],
               ),
 
@@ -123,23 +121,19 @@ class _PageMState extends State<PageM> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const SizedBox(width: 8),
-
-                      // SVG иконка 1
-                      SvgPicture.asset(
-                        'images/IconPage1.svg',
-                        width: 21,
-                        height: 21,
-                        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                      ),
-
-                      const SizedBox(width: 8),
-
-                      const Expanded(
+                      SizedBox(width: 8),
+                      // SvgPicture.asset(
+                      //   'images/IconPage1.svg',
+                      //   width: 21,
+                      //   height: 21,
+                      //   colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                      // ),
+                      SizedBox(width: 8),
+                      Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -159,22 +153,24 @@ class _PageMState extends State<PageM> {
                           ],
                         ),
                       ),
-
-                      SvgPicture.asset(
-                        'images/IconPage2.svg',
-                        width: 21,
-                        height: 21,
-                        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                      ),
-
-                      const SizedBox(width: 8),
+                      // SvgPicture.asset(
+                      //   'images/IconPage2.svg',
+                      //   width: 21,
+                      //   height: 21,
+                      //   colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                      // ),
+                      SizedBox(width: 8),
                     ],
                   ),
                 ),
               ),
+
+              // 👇 ПРИВЯЗКА К НИЗУ - Spacer толкает навигацию вниз
+              const Spacer(),
+
               // Нижняя навигация
               Container(
-                padding: const EdgeInsets.only(bottom: 20),  // 👈 отступ снизу 20
+                padding: const EdgeInsets.only(bottom: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -206,43 +202,45 @@ class _PageMState extends State<PageM> {
                     ),
                   ],
                 ),
-              )
-
-
-
-
-
-
+              ),
             ],
           ),
         ),
       ),
     );
   }
-
 }
-// САМ ВИДЖЕТ - разместите его внизу файла или в отдельном файле
+
+// Виджет нижней навигации
 class BottomItemSvg extends StatelessWidget {
   final String asset;
   final String label;
-  final VoidCallback? onTap;  // 👈 обязательно добавьте это поле
+  final VoidCallback? onTap;
 
   const BottomItemSvg({
     super.key,
     required this.asset,
     required this.label,
-    this.onTap,  // 👈 добавьте в конструктор
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,  // 👈 используйте здесь
+      onTap: onTap,
       child: Column(
         children: [
-          SvgPicture.asset(asset, width: 24, height: 24),
+          SvgPicture.asset(
+            asset,
+            width: 24,
+            height: 24,
+            colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+          ),
           const SizedBox(height: 4),
-          Text(label, style: const TextStyle(fontSize: 10, color: Colors.white)),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 10, color: Colors.white),
+          ),
         ],
       ),
     );
