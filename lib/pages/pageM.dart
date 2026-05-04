@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; //Добавление для svg
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterproj/pages/tarifPage.dart'; //Добавление для svg
 
 class PageM extends StatefulWidget {
   const PageM({super.key});
@@ -173,20 +174,39 @@ class _PageMState extends State<PageM> {
               ),
               // Нижняя навигация
               Container(
-                padding: const EdgeInsets.only(top: 60),
-                
+                padding: const EdgeInsets.only(bottom: 20),  // 👈 отступ снизу 20
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    BottomItemSvg(asset: 'images/IconP1.svg', label: 'Подлкючиться'),
-                    BottomItemSvg(asset: 'images/IconP2.svg', label: 'Тарифы'),
-                    BottomItemSvg(asset: 'images/IconP3.svg', label: 'Поделиться'),
-                    BottomItemSvg(asset: 'images/IconP4.svg', label: 'Профиль'),
+                    BottomItemSvg(
+                      asset: 'images/IconP1.svg',
+                      label: 'Подключиться',
+                      onTap: () {},
+                    ),
+                    BottomItemSvg(
+                      asset: 'images/IconP2.svg',
+                      label: 'Тарифы',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const tarifPage()),
+                        );
+                      },
+                    ),
+                    BottomItemSvg(
+                      asset: 'images/IconP3.svg',
+                      label: 'Поделиться',
+                      onTap: () {},
+                    ),
+                    BottomItemSvg(
+                      asset: 'images/IconP4.svg',
+                      label: 'Профиль',
+                      onTap: () {},
+                    ),
                   ],
                 ),
               )
-
 
 
 
@@ -204,37 +224,25 @@ class _PageMState extends State<PageM> {
 // САМ ВИДЖЕТ - разместите его внизу файла или в отдельном файле
 class BottomItemSvg extends StatelessWidget {
   final String asset;
-  final String label;  // 👈 добавляем текст
-  final VoidCallback? onTap;
+  final String label;
+  final VoidCallback? onTap;  // 👈 обязательно добавьте это поле
 
   const BottomItemSvg({
     super.key,
     required this.asset,
-    required this.label,  // 👈 обязательный параметр
-    this.onTap,
+    required this.label,
+    this.onTap,  // 👈 добавьте в конструктор
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap,  // 👈 используйте здесь
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(
-            asset,
-            width: 24,
-            height: 24,
-            colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-          ),
+          SvgPicture.asset(asset, width: 24, height: 24),
           const SizedBox(height: 4),
-          Text(
-            label,
-            style: const TextStyle(
-              fontSize: 10,
-              color: Colors.white,
-            ),
-          ),
+          Text(label, style: const TextStyle(fontSize: 10, color: Colors.white)),
         ],
       ),
     );
